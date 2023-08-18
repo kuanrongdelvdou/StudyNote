@@ -1,14 +1,11 @@
-
-
 ## 1. Zookeeper介绍
 
 ### 1.1 什么是Zookeeper
 
 + ZooKeeper 是⼀种分布式 <font color=red>**`协调服务`**</font>，⽤于管理大型主机。
 
-  > 在分布式环境中 <font color=red>**`协调`**</font> 和 <font color=red>**`管理`**</font> 服务是 一个复杂的过程。ZooKeeper 通过其简单的架构和 API 解决了这个问题。
+  > 在分布式环境中 <font color=red>**`协调`**</font> 和 <font color=red>**`管理`**</font> 服务是 一个复杂的过程。ZooKeeper 通过其简单的架构和 API 解决了这个问题。ZooKeeper 允许开 发⼈员专注于核心应⽤程序逻辑，⽽不必担⼼应⽤程序的分布式特性。
   >
-  > ZooKeeper 允许开 发⼈员专注于核心应⽤程序逻辑，⽽不必担⼼应⽤程序的分布式特性。
 
 ### 1.2 Zookeeper的应用场景
 
@@ -16,7 +13,7 @@
 
 + 分布式协调组件
 
-  > ![image-20220523214322643](.\image\image-20220523214322643.png)
+  > ![image-20220523214322643](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220523214322643.png)
   >
   > 在分布式系统中，需要有 zookeeper 作为分布式协调组件，协调分布式系统中的 <font color=red>**`状态`**</font>。
 
@@ -30,7 +27,7 @@
 
   > 用户在登录的时候，如果将登录信息存放在服务器 1 上是不合适的，因为如果用户下一次登录的时候，通过 nginx 有可能登录到系统 2，3 上。所以我们统一的将登录信息放在 zk 上，那么服务器 1，2，3 就无需关系用户到底在哪台服务器上登录了，因为登录的状态信息在 zk 上维护。这个时候就实现了系统1，2，3 的无状态化。
   >
-  > ![image-20220523214443891](.\image\image-20220523214443891.png)
+  > ![image-20220523214443891](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220523214443891.png)
 
 ## 2. 搭建zk服务器
 
@@ -52,7 +49,7 @@
 
 + 基本目录概述
 
-  > ![image-20220523224611703](.\image\image-20220523224611703.png)
+  > ![image-20220523224611703](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220523224611703.png)
   >
   > ```shell
   > [root@localhost apache-zookeeper-3.8.0-bin]# cd bin/
@@ -112,7 +109,7 @@
   > [root@localhost bin]# ./zkServer.sh start ../conf/zoo.cfg 
   > ```
   >
-  > ![image-20220523231045407](.\image\image-20220523231045407.png)
+  > ![image-20220523231045407](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220523231045407.png)
 
 + 查看 zk 服务器状态
 
@@ -120,7 +117,7 @@
   > [root@localhost bin]# ./zkServer.sh status ../conf/zoo.cfg 
   > ```
   >
-  > ![image-20220523231247812](.\image\image-20220523231247812.png)
+  > ![image-20220523231247812](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220523231247812.png)
 
 + 停止 zk 服务器
 
@@ -128,7 +125,7 @@
   > [root@localhost bin]# ./zkServer.sh stop ../conf/zoo.cfg 
   > ```
   >
-  > ![image-20220523231437315](.\image\image-20220523231437315.png)
+  > ![image-20220523231437315](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220523231437315.png)
 
 ## 3. zk内部的数据模型
 
@@ -138,7 +135,7 @@
 
   > Zookeeper 的数据模型是什么样子呢？它很像数据结构当中的 <font color=red>**`树`**</font>，也很像文件系统的 <font color=red>**`目录`**</font>。
   >
-  > <img src=".\image\image-20220523232258556.png" alt="image-20220523232258556" style="zoom: 33%;" />
+  > <img src="https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220523232258556.png" alt="image-20220523232258556" style="zoom: 33%;" />
 
 + 树是由 <font color=red>**`节点`**</font> 所组成，Zookeeper 的数据存储也同样是基于 <font color=red>**`节点`**</font>，这种节点叫做<font color=red> **`Znode`**</font> 但是，不同于树的节点，Znode 的引用方
 
@@ -181,7 +178,7 @@
   >    [zk: localhost:2181(CONNECTED) 0] ls /
   >    ```
   >
-  >    ![image-20220524084451605](.\image\image-20220524084451605.png)
+  >    ![image-20220524084451605](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524084451605.png)
 
 1. <font color=blue>**持久节点**</font>: 创建出的节点，在会话结束后依然存在。保存数据 
 
@@ -191,7 +188,7 @@
    >    [zk: localhost:2181(CONNECTED) 2] create /test1
    >    ```
    >
-   >    ![image-20220524084732696](.\image\image-20220524084732696.png)
+   >    ![image-20220524084732696](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524084732696.png)
    >
    > 2. 查询所创建的节点
    >
@@ -199,7 +196,7 @@
    >    [zk: localhost:2181(CONNECTED) 4] ls /
    >    ```
    >
-   >    ![image-20220524084942613](.\image\image-20220524084942613.png)
+   >    ![image-20220524084942613](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524084942613.png)
 
 2. <font color=blue>**持久序号节点**</font>: 创建出的节点，根据先后顺序，会在节点之后带上⼀个数值，越后执行数值 <font color=red>**`越大`**</font>
 
@@ -207,7 +204,7 @@
    >
    > 2. 继续创建一个节点 test1(上面我们已经创建了 test1)
    >
-   >    ![image-20220524085140004](.\image\image-20220524085140004.png)
+   >    ![image-20220524085140004](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524085140004.png)
    >
    > 3. 创建一个持久需要节点：加参数 -s, 执行下面的命令 4 次
    >
@@ -215,7 +212,7 @@
    >    [zk: localhost:2181(CONNECTED) 6] create -s /test1 
    >    ```
    >
-   >    ![image-20220524085724439](.\image\image-20220524085724439.png)
+   >    ![image-20220524085724439](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524085724439.png)
 
 3. <font color=blue>**临时节点**</font>：临时节点是在会话结束后，自动被 <font color=red>**`删除`**</font> 的
 
@@ -225,17 +222,14 @@
    >    [zk: localhost:2181(CONNECTED) 11] create -e /test2
    >    ```
    >
-   >    ![image-20220524090446614](.\image\image-20220524090446614.png)
+   >    ![image-20220524090446614](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524090446614.png)
    >
    > 2. 新开一个 xshell 会话 <font color=red>`session2`</font>，将 1 中使用的 xshell <font color=red>`session1`</font> 会话关闭，过30 秒，使用 session2 会话查询节点
    >
-   >    ![image-20220524090739139](.\image\image-20220524090739139.png)
+   >    ![image-20220524090739139](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524090739139.png)
    >
-   >    我们发现 <font color=red>`test2`</font> 这个节点不在了，因为与之相连的 session1 会话已经关闭了，test2 节点会自动被 <font color=red>**`删除`**</font>。
+   >    我们发现 <font color=red>`test2`</font> 这个节点不在了，因为与之相连的 session1 会话已经关闭了，test2 节点会自动被 <font color=red>**`删除`**</font>。通过这个特性 zk 可以实现服务 <font color=red>**`注册`**</font> 与 <font color=red>**`发现`**</font> 的效果。那么临时节点是如何维持心跳呢?![image-20220523234415478](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220523234415478.png)
    >
-   >    + 通过这个特性 zk 可以实现服务 <font color=red>**`注册`**</font> 与 <font color=red>**`发现`**</font> 的效果。那么临时节点是如何维持心跳呢?
-   >
-   >   ![image-20220523234415478](.\image\image-20220523234415478.png)
    
 4. <font color=blue>**临时序号节点**</font>：跟持久序号节点相同，适⽤于<font color=red> **`临时`**</font> 的 <font color=red>**`分布式锁`**</font>。
 
@@ -245,7 +239,7 @@
    >    [zk: localhost:2181(CONNECTED) 3] create -es /test3
    >    ```
    >
-   >    ![image-20220524091702029](.\image\image-20220524091702029.png)
+   >    ![image-20220524091702029](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524091702029.png)
 
 5. <font color=blue>**Container节点(3.5.3版本新增)**</font>：Container 容器节点，当容器中没有任何子节点，该容器节点会被 zk 定期删除(60s)。
 
@@ -255,7 +249,7 @@
    >    [zk: localhost:2181(CONNECTED) 5] create -c /mycontainer
    >    ```
    >
-   >    ![image-20220524092038162](.\image\image-20220524092038162.png)
+   >    ![image-20220524092038162](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524092038162.png)
    >
    > 2. 在容器节点下，继续创建 node1, node2
    >
@@ -264,7 +258,7 @@
    >    [zk: localhost:2181(CONNECTED) 9] create /mycontainer/node2
    >    ```
    >
-   >    ![image-20220524092338224](.\image\image-20220524092338224.png)
+   >    ![image-20220524092338224](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524092338224.png)
    >
    > 3. 删除 /mycontainer 下的 node1, node2 过一段时间再看看 mycontainer 节点是否存在
    >
@@ -273,7 +267,7 @@
    >    [zk: localhost:2181(CONNECTED) 12] delete /mycontainer/node2
    >    ```
    >
-   >    ![image-20220524092647312](.\image\image-20220524092647312.png)
+   >    ![image-20220524092647312](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524092647312.png)
    >
    >    mycontainer 节点已经不存在了！
 
@@ -288,7 +282,7 @@
 
 + zk 的数据是运⾏在 <font color=red>`内存`</font> 中，zk 提供了两种持久化机制：<font color=red>`事务日志`</font>，<font color=red>`数据快照`</font>
 
-  ![image-20220524093256175](.\image\image-20220524093256175.png)
+  ![image-20220524093256175](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524093256175.png)
 
 ### 4.1 事务日志
 
@@ -319,7 +313,7 @@
   > [zk: localhost:2181(CONNECTED) 16] create /test4 郝伟
   > ```
   >
-  > ![image-20220524094040400](.\image\image-20220524094040400.png)
+  > ![image-20220524094040400](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524094040400.png)
   >
   > 获取节点数据
   >
@@ -327,7 +321,7 @@
   > [zk: localhost:2181(CONNECTED) 18] get /test4
   > ```
   >
-  > ![image-20220524094142510](.\image\image-20220524094142510.png)
+  > ![image-20220524094142510](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524094142510.png)
 
 ### 5.2 查询节点
 
@@ -363,7 +357,7 @@
   > [zk: localhost:2181(CONNECTED) 25] 
   > ```
   >
-  > ![image-20220524094925071](.\image\image-20220524094925071.png)
+  > ![image-20220524094925071](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524094925071.png)
 
 #### 5.2.2 获取节点数据(get)
 
@@ -373,7 +367,7 @@
   > [zk: localhost:2181(CONNECTED) 27] get /test4
   > ```
   >
-  > ![image-20220524100721874](.\image\image-20220524100721874.png)
+  > ![image-20220524100721874](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524100721874.png)
 
 + 获取节点详细信息 get -s
 
@@ -381,7 +375,7 @@
   > [zk: localhost:2181(CONNECTED) 29] get -s /test4
   > ```
   >
-  > ![image-20220524100908875](.\image\image-20220524100908875.png)
+  > ![image-20220524100908875](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524100908875.png)
 
 + 节点信息说明
 
@@ -419,7 +413,7 @@
   > [zk: localhost:2181(CONNECTED) 38] ls -R /test5
   > ```
   >
-  > ![image-20220524101613230](.\image\image-20220524101613230.png)
+  > ![image-20220524101613230](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524101613230.png)
   >
   > test5 节点下有 sub1, sub1 下有 sub2，删除 test5
   >
@@ -427,7 +421,7 @@
   > [zk: localhost:2181(CONNECTED) 39] delete /test5
   > ```
   >
-  > ![image-20220524101736683](.\image\image-20220524101736683.png)
+  > ![image-20220524101736683](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524101736683.png)
   >
   > test5 不是空节点，无法删除。使用 deleteall 删除 test5 以及下面所有的子节点
   >
@@ -451,7 +445,7 @@
    > [zk: localhost:2181(CONNECTED) 43] delete -v 1 /vtest1 
    > ```
    >
-   > ![image-20220524102229713](.\image\image-20220524102229713.png)
+   > ![image-20220524102229713](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524102229713.png)
    >
    > 报错：版本号是无效的
 
@@ -461,7 +455,7 @@
    > [zk: localhost:2181(CONNECTED) 38] ls -R /test5
    > ```
    >
-   > ![image-20220524102432994](.\image\image-20220524102432994.png)
+   > ![image-20220524102432994](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524102432994.png)
 
 4. 什么是数据版本号呢？看看接下来的操作：给 vtest1 节点中存数据 “abccc”
 
@@ -469,7 +463,7 @@
    > [zk: localhost:2181(CONNECTED) 45] set /vtest1 abccc
    > ```
    >
-   > ![image-20220524102737944](.\image\image-20220524102737944.png)
+   > ![image-20220524102737944](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524102737944.png)
    >
    > 只要我们 set 一次值，那么数据版本就会 +1，继续 set 一次值 “hhhh”
    >
@@ -477,7 +471,7 @@
    > [zk: localhost:2181(CONNECTED) 49] set /vtest1 hhhh
    > ```
    >
-   > ![image-20220524104816266](.\image\image-20220524104816266.png)
+   > ![image-20220524104816266](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524104816266.png)
 
 5. 接下来我们继续删除版本 0
 
@@ -485,7 +479,7 @@
    > [zk: localhost:2181(CONNECTED) 48] delete -v 0 /vtest1 
    > ```
    >
-   > ![image-20220524103710499](.\image\image-20220524103710499.png)
+   > ![image-20220524103710499](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524103710499.png)
    >
    > 还是无法删除
 
@@ -505,7 +499,7 @@
 
 + 使用 xshell 新开两个连接，命名为 session1, session2
 
-  > ![image-20220524111801225](.\image\image-20220524111801225.png)
+  > ![image-20220524111801225](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524111801225.png)
 
 + session1, session2 分别启动 zk 客户端
 
@@ -549,13 +543,13 @@
   > [zk: localhost:2181(CONNECTED) 0] ls /test-node 
   > ```
   >
-  > ![image-20220524112901283](.\image\image-20220524112901283.png)
+  > ![image-20220524112901283](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524112901283.png)
   >
   > ```shell
   > [zk: localhost:2181(CONNECTED) 1] get /test-node
   > ```
   >
-  > ![image-20220524113015746](.\image\image-20220524113015746.png)
+  > ![image-20220524113015746](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524113015746.png)
   >
   > 提示我们权限不足，无法查看节点 test-node
 
@@ -573,7 +567,7 @@
   > [zk: localhost:2181(CONNECTED) 1] get /test-node
   > ```
   >
-  > ![image-20220524113328772](.\image\image-20220524113328772.png)
+  > ![image-20220524113328772](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524113328772.png)
 
 ## 6. Curator客户端的使用
 
@@ -737,7 +731,7 @@ public void testCreateWithParent() throws Exception {
   >
   > + 如果是读锁的话，则上锁成功
   >
-  > <img src=".\image\image-20220524125449195.png" alt="image-20220524125449195" style="zoom:33%;" />
+  > <img src="https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524125449195.png" alt="image-20220524125449195" style="zoom:33%;" />
 
 ### 7.2 如何上写锁
 
@@ -749,13 +743,13 @@ public void testCreateWithParent() throws Exception {
   >
   > + 如果不是，说明前⾯还有锁，则上锁失败，监听最小的节点，如果最小节点有变化， 则回到第二步。
   >
-  >   <img src=".\image\image-20220524150401445.png" alt="image-20220524150401445" style="zoom:33%;" />
+  >   <img src="https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524150401445.png" alt="image-20220524150401445" style="zoom:33%;" />
 
 ### 7.3 羊群效应
 
 + 如果用上述的上锁方式，只要有节点发生变化，就会触发其他节点的监听事件，这样的话对 zk 的压力非常大，这就是 <font color=red>**`羊群效应`**</font>。可以调整成 <font color=red>**`链式`**</font> 监听。解决这个问题。
 
-  > <img src=".\image\image-20220524152615295.png" alt="image-20220524152615295" style="zoom:33%;" />
+  > <img src="https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524152615295.png" alt="image-20220524152615295" style="zoom:33%;" />
 
 ### 7.4 curator实现读写锁
 
@@ -822,7 +816,7 @@ public void testCreateWithParent() throws Exception {
   >
   > + 当被 Watch 的 Znode 已删除，服务端会查找哈希表，找到该 Znode 对应的所有 Watcher，<font color=red>**`异步`**</font> 通知客户端，并且删除哈希表中对应的 Key-Value。
   >
-  >   ![image-20220524202742750](.\image\image-20220524202742750.png)
+  >   ![image-20220524202742750](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524202742750.png)
   
 + 客户端使⽤了 NIO 通信模式监听服务端的调⽤。
 
@@ -859,13 +853,13 @@ public void testCreateWithParent() throws Exception {
   >
   >   观察 session1 中的监听结果
   >
-  >   ![wwww](.\image\wwww.gif)
+  >   ![wwww](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/wwww.gif)
   >
   >   **WatchedEvent state:SyncConnected type:NodeDataChanged path:/testwatch**
   >
   > + session2 中再次给 testwatch 设置值 “aaa”, 这个时候 session1 中监听不到 testwatch 的变化了，因为 -w 是一次性监听；如何持续监听呢？====> session1 在每次获取 testwatch 的数据的时候都加上 -w 参数
   >
-  >   ![image-20220524205520719](.\image\image-20220524205520719.png)
+  >   ![image-20220524205520719](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524205520719.png)
 
 ### 8.3 curator客户端使用watch
 
@@ -904,7 +898,7 @@ public void testCreateWithParent() throws Exception {
   > + <font color=red>**Follower**</font>：只能处理读请求，<font color=red>**`参与 Leader 选举`**</font>。 
   > + <font color=red>**Observer**</font>：只能处理读请求，提升集群读的性能，但 <font color=red>**`不能参与 Leader 选举`**</font>。
   >
-  > ![image-20220524215727140](.\image\image-20220524215727140.png)
+  > ![image-20220524215727140](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524215727140.png)
 
 ### 9.2 集群搭建
 
@@ -914,9 +908,9 @@ public void testCreateWithParent() throws Exception {
 
    > zkData 目录是我们存放数据文件的目录
    >
-   > ![image-20220524220404817](.\image\image-20220524220404817.png)
+   > ![image-20220524220404817](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524220404817.png)
    >
-   > 1. 新建四个目录  zk1, zk2, zk3, zk4![image-20220524220552045](.\image\image-20220524220552045.png)
+   > 1. 新建四个目录  zk1, zk2, zk3, zk4![image-20220524220552045](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524220552045.png)
    >
    > 2. 分别在文件夹 zk1, zk2, zk3, zk4 中新建文件 myid，如下是四个 myid 文件的内容：
    >
@@ -932,19 +926,19 @@ public void testCreateWithParent() throws Exception {
 
 2. 编写 4 个 zoo.cfg
 
-   > ![image-20220524222049965](.\image\image-20220524222049965.png)
+   > ![image-20220524222049965](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524222049965.png)
    >
-   > ![image-20220524222247865](.\image\image-20220524222247865.png)
+   > ![image-20220524222247865](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524222247865.png)
    >
    > + 修改 zoo1,2,3,4.cfg 中的 dataDir, clientPort, server 配置
    >
    >   ```properties
    >   # 修改对应的zk1 zk2 zk3 zk4
    >   dataDir=/root/zk/apache-zookeeper-3.8.0-bin/zkData/zk1
-   >     
+   >       
    >   # 修改对应的端⼝ 2181 2182 2183 2184
    >   clientPort=2181
-   >     
+   >       
    >   # 2001为集群通信端⼝，3001为集群选举端⼝，observer表示不参与集群选举
    >   server.1=127.0.0.1:2001:3001
    >   server.2=127.0.0.1:2002:3002
@@ -961,7 +955,7 @@ public void testCreateWithParent() throws Exception {
    > [root@localhost bin]# ./zkServer.sh start ../conf/zoo4.cfg 
    > ```
    >
-   > ![image-20220524223842238](.\image\image-20220524223842238.png)
+   > ![image-20220524223842238](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524223842238.png)
 
 4. 查看每台 zk 服务器的角色信息
 
@@ -969,7 +963,7 @@ public void testCreateWithParent() throws Exception {
    > [root@localhost bin]# ./zkServer.sh start ../conf/zoo1.cfg 
    > ```
    >
-   > ![image-20220524224317317](.\image\image-20220524224317317.png)
+   > ![image-20220524224317317](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524224317317.png)
    >
    > 第二台是 leader, 1, 3 是 follower, 第四台是 observer 
 
@@ -983,7 +977,7 @@ public void testCreateWithParent() throws Exception {
   >
   > 为什么要写三台服务器呢？其实连接一台也可以，那么如果连接的这一台服务器挂了，那么就真挂了。连接三台，如果其中有一台挂了，自动会选举 leader 连接，抱枕集群的高可用性！
   >
-  > ![image-20220524235712452](.\image\image-20220524235712452.png)
+  > ![image-20220524235712452](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220524235712452.png)
   >
   > 通过查看客户端启动日志，我们发现连接到的是 2183 这台服务器
 
@@ -995,7 +989,7 @@ public void testCreateWithParent() throws Exception {
 
   > zookeeper 作为非常重要的 <font color=red>**`分布式协调`**</font> 组件，需要进行集群部署，集群中会以 <font color=red>**`⼀主多从`**</font> 的形式 进行部署。zookeeper 为了保证数据的 <font color=red>**`⼀致性`**</font>，使用了 <font color=red>`ZAB(Zookeeper Atomic Broadcast)`</font> 协议，这个协议解决了Zookeeper的崩溃恢复和主从数据同步的问题。
   >
-  > ![image-20220525085934233](.\image\image-20220525085934233.png)
+  > ![image-20220525085934233](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220525085934233.png)
 
 ### 10.2 四种节点状态
 
@@ -1020,17 +1014,17 @@ public void testCreateWithParent() throws Exception {
 
   > + 和选举班长类似，看哪个 zk 节点的票数多，那么就是 leader。同样面对一个问题，比如三个 zk 服务器，我们用什么标准来判断到底哪台 zk节点能力最强呢？
   >
-  >   ![image-20220525152328854](.\image\image-20220525152328854.png)
+  >   ![image-20220525152328854](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220525152328854.png)
   >
   > + zk1, zk2, zk3 没有及时同步数据，那么导致三台服务器中的数据有可能不一样，暂且认为 zk1 中的数据是最新的。那么 zk1 最适合当班长了。我们如何判断 zk1 中的数据是否是最新的呢？每个 zk 节点都有一个 <font color=red>**`zxid 属性(事务 id)`**</font>，比如所 zk1 接收到了 100 次请求，每次请求都修改了数据，每次修改数据 <font color=red>**`zxid 都会 +1`**</font>。而 zk2 接收了 50 次请求，zxid = 50
   >
-  >   ![image-20220525153421394](.\image\image-20220525153421394.png)
+  >   ![image-20220525153421394](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220525153421394.png)
   >
   >   总结：<font color=red>**`zxid 越大`**</font>，标识数据最新，越适合当班长
   >
   > + 如果 zk1, zk2, zk3 中的数据都是一模一样的，也就是说 zxid 都是 100，那么如何选呢？这个时候我们知道每台 zk 节点都有一个唯一标识 <font color=red>`myid`</font>，选择 <font color=red>`myid`</font> 大的作为班长
   >
-  >   ![image-20220525153744018](.\image\image-20220525153744018.png)
+  >   ![image-20220525153744018](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220525153744018.png)
   >
   >   总结：<font color=red>**zxid 一样，myid 大的作为班长**</font>
   
@@ -1045,11 +1039,11 @@ public void testCreateWithParent() throws Exception {
   > 
   >1. 首先启动 zk1: 启动之后 <font color=red>`首先投自己一票`</font>，并且在投票箱中记录以下选了自己(myid = 1, zxid = 100)。并且将投的票放在投票箱内。在 <font color=red>`zoo1.cfg`</font> 配置文件中，zk1 是知道这个集群还有其他两台 zk2, zk3 节点，就发消息给另外两台，因为 zk2, zk3, 还未启动，消息肯定发不出去。所以会等待其他节点的启动
   > 
-  >   ![image-20220525173316790](.\image\image-20220525173316790.png)
+  >   ![image-20220525173316790](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220525173316790.png)
   > 
   >2. 启动 zk2 : zk2 启动之后 <font color=red>**`首先也投自己一票`**</font>，并将投票结果放入投票箱中
   > 
-  >   ![image-20220525164441463](.\image\image-20220525164441463.png)
+  >   ![image-20220525164441463](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220525164441463.png)
   > 
   >3. zk1, zk2 都启动了，这个时候可以 <font color=red>`建立连接进行沟通了`</font>，假设：zk2 先发送自己的选票给 zk1, zk1的选票进行 <font color=red>`pk`</font>。
   > 
@@ -1061,13 +1055,13 @@ public void testCreateWithParent() throws Exception {
   > 
   >     3. 将投的票 <font color=red>`(myid = 2, zxid = 100)`</font> 结果放到投票箱中
   >   
-  >        ![image-20220525174628345](.\image\image-20220525174628345.png)
+  >        ![image-20220525174628345](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220525174628345.png)
   > 
   >   注意：<font color=blue>**zk1 的投票箱中的两张票虽然一样，但是是不同节点投的**</font>。
   > 
   >   zk1 改了选票(<font color=red>`将 (myid = 1, zxid = 100)改为了 (myid = 2 , zxid = 100)`</font>), 会将改票的结果发送到其他节点上去：
   > 
-  >   ![image-20220525180327737](.\image\image-20220525180327737.png)
+  >   ![image-20220525180327737](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220525180327737.png)
   > 
   >   zk2 接收到 zk1 发的选票信息，进行同样的 pk。zk2 选择了自己，然后将选票放入了投票箱。
   > 
@@ -1099,7 +1093,7 @@ public void testCreateWithParent() throws Exception {
 
 ### 10.5 主从之间的数据同步
 
-![image-20220525220645080](.\image\image-20220525220645080.png)
+![image-20220525220645080](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220525220645080.png)
 
 + 说明：
 
@@ -1150,7 +1144,7 @@ public void testCreateWithParent() throws Exception {
   >
   > + 还有⼀种是保证 CP，舍弃 A。例如网络故障是只读不写。 孰优孰略，没有定论，只能根据场景定夺，适合的才是最好的。
   >
-  >   ![image-20220526224954627](.\image\image-20220526224954627.png)
+  >   ![image-20220526224954627](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220526224954627.png)
 
 ### 11.3 BASE 理论
 
