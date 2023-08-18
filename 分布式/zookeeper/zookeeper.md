@@ -14,7 +14,7 @@
 + 分布式协调组件
 
   > ![image-20220523214322643](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image/image-20220523214322643.png)
-  >
+=======
   > 在分布式系统中，需要有 zookeeper 作为分布式协调组件，协调分布式系统中的 <font color=red>**`状态`**</font>。
 
 #### 1.2.1 分布式锁
@@ -935,10 +935,10 @@ public void testCreateWithParent() throws Exception {
    >   ```properties
    >   # 修改对应的zk1 zk2 zk3 zk4
    >   dataDir=/root/zk/apache-zookeeper-3.8.0-bin/zkData/zk1
-   >       
+   >         
    >   # 修改对应的端⼝ 2181 2182 2183 2184
    >   clientPort=2181
-   >       
+   >         
    >   # 2001为集群通信端⼝，3001为集群选举端⼝，observer表示不参与集群选举
    >   server.1=127.0.0.1:2001:3001
    >   server.2=127.0.0.1:2002:3002
