@@ -16,7 +16,7 @@
 
 + 分布式协调组件
 
-  > ![image-20220523214322643](.\image\image-20220523214322643.png)
+  > ![image-20220523214322643](https://github.com/kuanrongdelvdou/StudyNote/blob/main/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/image//image-20220523214322643.png)
   >
   > 在分布式系统中，需要有 zookeeper 作为分布式协调组件，协调分布式系统中的 <font color=red>**`状态`**</font>。
 
